@@ -1,0 +1,342 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+\usepackage{array}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{tabularx}
+
+\title{Math 115A Homework 1}
+\author{Mateo Umaguing}
+\date{September 29, 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Multiplication Tables
+        \begin{center}
+        \vspace{5mm}
+        Table 2: Multiplication in $\mathbb{Z} / 3\mathbb{Z}$ \\
+        \vspace{5mm}
+        \renewcommand{\arraystretch}{2}
+        \begin{tabularx}{0.2\textwidth} {
+         >{\centering\arraybackslash}X 
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X | }
+             & 0 & 1 & 2 \\
+            \hline
+            0 & 0 & 0 & 0 \\
+            \hline
+            1 & 0 & 1 & 2 \\
+            \hline
+            2 & 0 & 2 & 1 \\
+            \hline
+        \end{tabularx} \\
+        \vspace{10mm}
+        Table 3: Multiplication in $\mathbb{Z} / 4\mathbb{Z}$ \\
+        \vspace{5mm}
+        \renewcommand{\arraystretch}{2}
+        \begin{tabularx}{0.25\textwidth} {
+         >{\centering\arraybackslash}X 
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X
+        | >{\centering\arraybackslash}X | }
+             & 0 & 1 & 2 & 3 \\
+            \hline
+            0 & 0 & 0 & 0 & 0 \\
+            \hline
+            1 & 0 & 1 & 2 & 3 \\
+            \hline
+            2 & 0 & 2 & 0 & 2 \\
+            \hline
+            3 & 0 & 3 & 2 & 1 \\
+            \hline
+        \end{tabularx}
+        \end{center}
+        \vspace{5mm}
+        \item $\mathbb{Z} / p\mathbb{Z}$ is a field when $p$ is prime. \\
+        \textit{Proof.} \\
+        $\mathbb{Z}/p\mathbb{Z} \subset \mathbb{Z}/n\mathbb{Z}$ \\
+        FS1: Commutative addition and multiplication
+        \begin{gather*}
+            a, b \in \mathbb{Z}/n\mathbb{Z}, \ a +_n b := a + b \textrm{ (mod } n) \\
+            \forall a,b \in \mathbb{Z}, \ a + b = b + a \\
+            a + b \textrm{ (mod } n) = b + a \textrm{ (mod } n) \\
+            b + a \textrm{ (mod } n) = b +_n a \\
+            \therefore  a +_n b = b +_n a \ \forall a,b \in \mathbb{Z}/n\mathbb{Z}.
+        \end{gather*}
+        \begin{gather*}
+            a, b \in \mathbb{Z}/p\mathbb{Z}, \ a \cdot_n b := a + b \textrm{ (mod } n) \\
+            \forall a,b \in \mathbb{Z}, \ a \cdot b = b \cdot a \\
+            a \cdot b \textrm{ (mod } n) = b \cdot a \textrm{ (mod } n) \\
+            b \cdot a \textrm{ (mod } n) = b \cdot_n a \\
+            \therefore  a \cdot_n b = b \cdot_n a \ \forall a,b \in \mathbb{Z}/n\mathbb{Z}.
+        \end{gather*}
+        FS2: Associative addition and multiplication
+        \begin{gather*}
+            a,b,c \in \mathbb{Z}/n\mathbb{Z}, (a +_n b) +_n c = ((a + b \textrm{ (mod } n)) + c)  \ \textrm{ (mod } n) \\
+            = (a + (b+c) \  (\textrm{mod } n)) \ \textrm{mod } n) \\
+            a +_n (b +_n c) = (a + (b + c) (\textrm{mod } n))\  (\textrm{mod } n) \\
+            \therefore (a +_n b) +_n c = (a + (b+c) \  (\textrm{mod } n)) \ \textrm{mod } n) = a +_n (b+_n c) \\
+            \therefore (a +_n b) +_n c = a +_n (b+_n c)
+        \end{gather*}
+        \begin{gather*}
+            a,b,c \in \mathbb{Z}/n\mathbb{Z}, (a \cdot_n b) \cdot_n c = ((a \cdot b \textrm{ (mod } n)) \cdot c)  \ \textrm{ (mod } n) \\
+            = (a \cdot (b\cdot c) \  (\textrm{mod } n)) \ \textrm{mod } n) \\
+            a \cdot_n (b \cdot_n c) = (a \cdot (b \cdot c) (\textrm{mod } n))\  (\textrm{mod } n) \\
+            \therefore (a \cdot_n b) \cdot_n c = (a \cdot (b\cdot c) \  (\textrm{mod } n)) \ \textrm{mod } n) = a \cdot_n (b\cdot_n c) \\
+            \therefore (a \cdot_n b) \cdot_n c = a \cdot_n (b\cdot_n c)
+        \end{gather*}
+        FS3: Existence of additive and multiplicative identities
+        \begin{gather*}
+            0 \in \mathbb{Z}/p\mathbb{Z} \\
+            \forall a \in \mathbb{Z}/n\mathbb{Z}, \ 0 +_n a := 0 + a \textrm{ (mod } n) \\
+            0 + a = a, \ \therefore  0 + a \textrm{ (mod } n) = a \textrm{ (mod } n) \\
+            \forall a \in \mathbb{Z}/n\mathbb{Z}, \ a \textrm{ (mod } n) = a \\
+            (\textrm{Since } a < n \ \forall a \in \mathbb{Z}/n\mathbb{Z}) \\
+            \therefore  0 +_n a = a \ \forall a \in \mathbb{Z}/n\mathbb{Z}.
+        \end{gather*}
+        \begin{gather*}
+            1 \in \mathbb{Z}/n\mathbb{Z} \\
+            \forall a \in \mathbb{Z}/n\mathbb{Z}, \ 1 \cdot_n a := 1 \cdot a \textrm{ (mod } n) \\
+            1 \cdot a = a, \ \therefore  1 \cdot a \textrm{ (mod } n) = a \textrm{ (mod } n) \\
+            \forall a \in \mathbb{Z}/n\mathbb{Z}, \ a \textrm{ (mod } n) = a \\
+            (\textrm{Since } a < n \ \forall a \in \mathbb{Z}/n\mathbb{Z}) \\
+            \therefore  1 \cdot_n a = a \ \forall a \in \mathbb{Z}/n\mathbb{Z}.
+        \end{gather*}
+        FS4: Existence of additive and multiplicative inverses
+        \begin{gather*}
+            \textrm{Since } \mathbb{Z}/n\mathbb{Z}:=\{0,1,...,n-1\}, \ a < n \  \forall a \in \mathbb{Z}/n\mathbb{Z}. \\
+            \therefore  \exists b \in \mathbb{Z}/n\mathbb{Z} : a + b = n. \\
+            \textrm{Since } n \textrm{ (mod } n) = 0 \textrm{ and } \exists b \in \mathbb{Z}/n\mathbb{Z} \ \forall a \in \mathbb{Z}/n\mathbb{Z} : a + b = n, \\ \forall a \in \mathbb{Z}/n\mathbb{Z} \ \exists b \in \mathbb{Z}/n\mathbb{Z} : a +_n b = 0. \\
+            \textrm{For every value in } \mathbb{Z}/p\mathbb{Z} \textrm{ in which $p$ is a prime number, the greatest common denominator of any number} \\ 
+            a \in \mathbb{Z}/p\mathbb{Z} \textrm{ and } p \textrm{ is } 1. \\
+            \therefore \exists x,y \in \mathbb{Z} : ax+py=1 \\
+            x = kp + c \textrm{ for some value } k\in \mathbb{Z}, c\in \mathbb{Z}/p\mathbb{Z} \\
+            \therefore a(kp + c) + py = 1 \\
+            akp + ac + py = 1, \
+            ac + p(ak + y) = 1, \ 
+            ac = p(-ak - y) + 1 \\
+            \therefore \exists a,c \in \mathbb{Z}/p\mathbb{Z} : a \cdot_n \textrm{c} = 1 
+        \end{gather*}
+        FS5: Distributive multiplication
+        \begin{gather*}
+            a \cdot_n (b +_n c) \\
+            = (a \cdot (b + c) \ (\textrm{mod } n)) \ (\textrm{mod } n) \\
+            = (a \cdot ((b \ (\textrm{mod } n) + (c \ (\textrm{mod } n)) \ (\textrm{mod } n)) \ (\textrm{mod } n) \\
+            = ((a \cdot b) \ (\textrm{mod } n) + (a \cdot c) \ (\textrm{mod } n)) \ (\textrm{mod } n) \\
+            a \cdot_n b +_n a \cdot_n c = ((a \cdot b) \ (\textrm{mod } n) + (a \cdot c) \ (\textrm{mod } n)) \ (\textrm{mod } n) \\
+            \textrm{Since both } a \cdot_n (b +_n c) \textrm{ and } a \cdot_n b +_n a \cdot_n c = ((a \cdot b) \ (\textrm{mod } n) + (a \cdot c) \ (\textrm{mod } n)) \ (\textrm{mod } n), \\
+             a \cdot_n (b +_n c) = a \cdot_n b +_n a \cdot_n c \qed
+        \end{gather*}
+        \item $\mathbb{Z} / n\mathbb{Z}$ is not a field when $n$ is composite.
+        \begin{gather*}
+            \textrm{There does not always exist a multiplicative inverse } b \in \mathbb{Z}/n\mathbb{Z} \textrm{ in which } a \cdot_n b = 1 \ \forall a \in \mathbb{Z}/n\mathbb{Z}. \\
+            \textrm{If } n \textrm{ is divisible by some value } a \in \mathbb{Z}/n\mathbb{Z}, \textrm{ no value of } b \textrm{ can by multiplied in } \mathbb{Z}/n\mathbb{Z} : a \cdot_n b = 1.
+        \end{gather*}
+        \begin{gather*}
+            \textrm{For example, 2 multiplied by every number in } \mathbb{Z}/4\mathbb{Z} \textrm{ will yield either a 0 or 2 shown above.} \\
+            \textrm{None of these values are 1, thus 2 does not have a multiplicative inverse.}
+        \end{gather*}
+        \item Vector spaces over $\mathbb{Z} / 2\mathbb{Z}$
+        \begin{gather*}
+            (\mathbb{Z}/n\mathbb{Z})^2,\  (\mathbb{Z}/n\mathbb{Z})^3, \ (\mathbb{Z}/n\mathbb{Z})^4
+        \end{gather*}
+    \end{enumerate}
+    \item Is $\mathbb{R}$ a vector space over $\mathbb{Q}$? \\
+    Yes.
+    \begin{gather*}
+        \mathbb{Q} \subset \mathbb{R}, \textrm{ and all of } \mathbb{R} \textrm{ satisfies all of the axioms for a vector space. } \\
+        \textrm{Therefore, } \mathbb{R} \textrm{ can be a vector space over } \mathbb{Q}.
+    \end{gather*}
+    Is $\mathbb{Q}$ a vector subspace of R over $\mathbb{Q}$? \\
+    Yes.
+    \begin{gather*}
+        \textrm{Under Theorem 1.3, $W$ is a subspace of a vector space $V$} \iff \\
+        \vec 0 \in W, \ \forall x,y \in W, \ x+y \in W, \ \forall \lambda \in F, \ \forall w \in W, \lambda w \in W \\
+        \textrm{a) } \vec 0 \in \mathbb{Q} \textrm{ (0 is a rational number)} \\
+        \textrm{b) } x,y \in \mathbb{Q}. \ x + y \in \mathbb{Q} \textrm{ since } \mathbb{Q} \textrm{ is a field.} \\
+        \textrm{c) } \lambda \in \mathbb{Q}, x \in \mathbb{Q}. \ \lambda \cdot x \in \mathbb{Q} \textrm{ since both } \lambda, x \in \mathbb{Q}.
+    \end{gather*}
+    \item \textbf{General field-valued functions as vector spaces.}
+    \begin{enumerate}
+        \item Addition on elements of Fun($S,F$)
+        \begin{gather*}
+            f,g \in \textrm{Fun}(S,F) \\
+            (f+g)(x):=f(x)+g(x), x \in S
+        \end{gather*}
+        \item Scalar multiplication of elements of Fun($S, F$) by elements of $F$
+        \begin{gather*}
+            f \in \textrm{Fun}(S,F) \\
+            (\lambda f)(x) := \lambda \cdot f(x), \lambda \in \mathbb{R}, x \in S
+        \end{gather*}
+        \item Fun($S, F$) is a vector space. \\
+        \textit{Proof.} 
+        \begin{gather*}
+            \forall f \in \textrm{Fun}(S,f), f \textrm{ abides by the axioms of a field since Fun}(S,F) \textrm{ is over a field } F.
+        \end{gather*}
+        VS1 Commutative addition
+        \begin{gather*}
+            f,g \in \textrm{Fun}(S,F), x \in S \\
+            (f+g)(x) = f(x)+g(x), x \in S \textrm{ as defined above} \\
+            (g+f)(x) = g(x)+f(x), x \in S \\
+            g(x) + f(x) = f(x) + g(x), \ \therefore (f+g)(x) = (g+f)(x)
+        \end{gather*}
+        VS2 Associative addition
+        \begin{gather*}
+            f,g,h \in \textrm{Fun}(S,F), x \in S \\
+            (f+g)(x) + h(x) = f(x) + g(x) + h(x) \textrm{ by def. of addition} \\
+            f(x) + (g+h)(x) = f(x) + g(x) + h(x) \textrm{ by def. of addition} \\
+            \therefore (f+g)(x)+h(x) = f(x) + (g+h)(x)
+        \end{gather*}
+        VS3 Existence of additive identity
+        \begin{gather*}
+            0,f \in \textrm{Fun}(S,F), x \in S \\
+            (f + 0)(x) = f(x) + 0 \\
+            f(x) + 0 = f(x), \ \therefore \exists 0 \in \textrm{Fun}(S,F) : (f+0)(x) = f(x) \\
+            0 \textrm{ is an infinitely differentiable continuous function } \in C^{\infty}(\mathbb{R})
+        \end{gather*}
+        VS4 Existence of additive inverse
+        \begin{gather*}
+            f \in \textrm{Fun}(S,F), x \in S, \ \exists g \in \textrm{Fun}(S,F) : (f+g)(x) = 0 \textrm{ (Since $f$ and $g$ are field elements)}\\
+            (f + g)(x) = f(x) + g(x) = 0 \\
+            \therefore \exists g \in \textrm{Fun}(S,F) : \forall f, \ (f+g)(x) \ (f+g)(x) = 0 \\
+            \textrm{($g$ equals $-f$)}
+        \end{gather*}
+        VS5 Existence of multiplicative identity
+        \begin{gather*}
+            1,f \in \textrm{Fun}(S,F), x \in S \\
+            (1 \cdot f)(x) = 1\cdot f(x) \textrm{ by def. of multiplication} \\
+            1 \cdot f(x) = f(x), \ \therefore \forall f \in \textrm{Fun}(S,F), \ (1 \cdot f)(x) = f(x)
+        \end{gather*}
+        VS6 Associative multiplication
+        \begin{gather*}
+            a,b \in \mathbb{R}, f \in \textrm{Fun}(S,F), x \in S \\
+            a(bf)(x) = a \cdot b \cdot f(x) \\
+            b(af)(x) = b \cdot a \cdot f(x) \\
+            a \cdot b = b \cdot a \textrm{ by commutative mult. in $\mathbb{R}$ } \\
+            \therefore a(bf)(x) = b(af)(x)
+        \end{gather*}
+        VS7 Distributive addition
+        \begin{gather*}
+            a \in \mathbb{R}, f,g \in \textrm{Fun}(S,F), x \in S \\
+            a(f + g)(x) = a \cdot (f(x) + g(x)) \textrm{ by def. of addition} \\
+            a \cdot (f(x) + g(x)) = af(x) + ag(x) \textrm{ by axiom F5 for fields} \\
+            \therefore a(f + g)(x) = af(x) + ag(x)
+        \end{gather*}
+        VS8 Distributive multiplication
+        \begin{gather*}
+            a,b \in \mathbb{R}, f \in \textrm{Fun}(S,F), x \in S \\
+            ((a+b)f)(x) = (a + b)(f(x)) \\
+            a \cdot f(x) + b \cdot f(x) \textrm{ by distributivity } \\
+            = (af)(x) + (bf)(x) \textrm{ by def. of addition} \\
+            = (af + bf)(x) = ((a+b)f)(x) \textrm{ by distributivity} \qed
+        \end{gather*}
+        \item The set Fun($\mathbb{R}, \mathbb{R}$) forms a vector space over $\mathbb{R}$. \\
+        Since Fun$(S,F)$ is a vector space and $\mathbb{R}$ is a set and a field, Fun$(\mathbb{R},\mathbb{R})$ is a vector space over $\mathbb{R}$.
+        \item \(C^{\infty}(\mathbb{R})\) is a vector subspace of Fun($\mathbb{R},\mathbb{R}$) over $\mathbb{R}$. \\
+        \textit{Proof.}
+        \begin{gather*}
+            \textrm{Under Theorem 1.3, $W$ is a subspace of a vector space $V$} \iff \\
+            \vec 0 \in W, \ \forall x,y \in W, \ x+y \in W, \ \forall \lambda \in F, \ \forall w \in W, \lambda w \in W \\
+            \textrm{a) } \vec 0 \in C^{\infty}(\mathbb{R}) \textrm{ since 0 is an infinitely differentiable function} \\
+            \textrm{b) The sum of two infinitely differentiable continuous function is an infinitely differentiable}\\ \textrm{continuous function.} \\
+            \textrm{c) The product of a scalar and an infinitely differentiable continuous function is an} \\ \textrm{infinitely differentiable continuous function.} \\
+            \textrm{Since all conditions of being a subspace are met, } C^{\infty}(\mathbb{R}) \textrm{ is a subspace of Fun}(\mathbb{R}, \mathbb{R}) \textrm{ over } \mathbb{R}. \qed
+        \end{gather*}
+    \end{enumerate}
+    \item \textbf{Uniqueness of inverses.} \\
+    Additive inverses are unique. \\
+    \textit{Proof.}
+    \begin{gather*}
+        \textrm{Let } x,y,z \in \textrm{ vector space } V : x+y=0, \ x+z=0. \\
+        \textrm{By the definition of the additive inverse, $y$ and $z$ are additive inverses of } x. \\
+        \textrm{Since both } x+y \textrm{ and } x+z = 0, x+y=x+z. \\
+        \textrm{By Theorem 1.1, for some values } x,y,z \in V, \textrm{ if } x+z=x+y, z=y. \\
+        \therefore \textrm{ there is a single value in which $y$ and $z$ are equal to } : x+ \textrm{ this value } = 0. \qed
+    \end{gather*}
+    \item \textbf{Linear combinations.}
+    \begin{gather*}
+        \lambda_1 a(x) + \lambda_2 b(x) + \lambda_3 c(x) + \lambda_4 d(x) + \lambda_5 e(x) \\
+        = \lambda_1 (x^4 - x) + \lambda_2 (x^3 + x^2) + \lambda_3 (\sqrt{2}x^2) + \lambda_4 (x-1) + \lambda_5 (1) \\
+        \textrm{Let } \lambda_1 = 1, \lambda_2 = 0, \lambda_3 = 2\sqrt{2}, \lambda_4 = 1, \lambda_5 = (1-\sqrt{2}) \\
+        (\textrm{All of these numbers} \in \mathbb{R}) \\
+        \lambda_1 a(x) + \lambda_2 b(x) + \lambda_3 c(x) + \lambda_4 d(x) + \lambda_5 e(x) \\
+        = 1\cdot(x^4-x) + 2\sqrt{2}\cdot(\sqrt{2}x^2) + 0\cdot(x^3+x^2) + 1\cdot(x-1) + (1-\sqrt{2})\cdot(1) \\
+        = x^4 - x + 4x^2 + x - 1 + 1 - \sqrt{2} \\
+        = x^4 + 4x^2 - \sqrt{2}
+    \end{gather*}
+    \begin{gather*}
+        \lambda_1 = 1, \lambda_2 = 0, \lambda_3 = 2\sqrt{2}, \lambda_4 = 1, \lambda_5 = (1-\sqrt{2})
+    \end{gather*}
+    \item 1.2 \# 2, 3 \\
+    2. Zero vector of $M_{3\times 4}(F)$
+    \begin{gather*}
+        \begin{pmatrix}
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 0
+        \end{pmatrix}  
+    \end{gather*}
+    3. $M_{13},$ $M_{21},$ and $M_{22}$
+    \begin{gather*}
+        M = \begin{pmatrix}
+            1 & 2 & 3 \\
+            4 & 5 & 6
+        \end{pmatrix} \\
+        M_{13} = 3, M_{21} = 4, M_{22} = 5
+    \end{gather*}
+    \item 1.2 \# 13 \\
+    Is $V$ a vector space over $\mathbb{R}$ with these operations? \\
+    No. VS8 fails. \\
+    VS8. Distributive multiplication
+    \begin{gather*}
+        \textrm{Let } x \in V : x = (x_1,x_2), a,b \in \mathbb{R}. \\
+        \textrm{Let } c = a+b, \therefore \ cx = (a+b)x \\
+        \forall a \in V, \ c(a_1,a_2) = (ca_1,a_2). \therefore c(x_1,x_2) = (cx_1,x_2) \\
+        (cx_1,x_2) = ((a+b)x_1, x_2) = (ax_1 + bx_1, x_2) \textrm{ by distributivity in $\mathbb{R}$} \\
+        ax+bx = a(x_1,x_2) + b(x_1,x_2) = (ax_1, x_2) + (bx_1, x_2) \textrm{ by def. of scalar mult. in $V$} \\
+        (ax_1, x_2) + (bx_1, x_2) = (ax_1 + bx_1, x^2_2) \textrm{ by def. of addition in $v$} \\
+        (ax_1 + bx_1, x^2_2) \neq (ax_1 + bx_1, x_2), \therefore \textrm{ since } (ax_1 + bx_1, x^2_2) = ax + bx \textrm{ and } (ax_1 + bx_1, x_2) = (a+b)x, \\
+        (a+b)x \neq ax+bx.
+    \end{gather*}
+    Since VS8 fails, $V$ is not a vector space.
+    \item 1.3 \#5 \\
+    \textit{Proof.}
+    \begin{gather*}
+        \textrm{For any $n\times n$ matrix, } A, \ A^t_{ij} = A_{ji}, \forall i,j \in n. \\
+        \textrm{The addition of two $n\times n$ matrices $A$ and $B$ is } A+B=C. \ C_{ij} = A_{ij}+B_{ij} \  \forall i,j \in n. \\
+        \textrm{Let } A + A^t = C \textrm{ in which } C_{ij} = A_{ij} + A^t_{ij}. \textrm{ Since } A^t_{ij} = A_{ji}, \\
+        C_{ij} = A_{ij} + A_{ji} \ \forall i,j \in n. \\
+        C_{ji} = A_{ji} + A^t_{ji}, \textrm{ and } A^t{ji} = A_{ij}. \\
+        \therefore C_{ji} = A_{ji} + A_{ij}. \\
+        A_{ij} + A_{ji} = A_{ji} + A{ij} \textrm{ by the commutative property of addition, } \therefore C_{ij} = C_{ji} \ \forall i,j \in n. \\
+        \textrm{Since } C_{ij} = C_{ji}, \ C = A + A^t \textrm{ is symmetric for all $n \times n $ matrices.} \qed
+    \end{gather*}
+    \item 1.3 \# 27 \\
+    $V$ is a direct sum of $W_1$ and $W_2$. \\
+    \textit{Proof.}
+    \begin{gather*}
+        W_1 \textrm{ consists of all diagonal matrices. Thus, } W_1 = \{A \in V: A_{ij} = 0 \textrm{ whenever } i \neq j\} \\
+        W_2 = \{A \in V : A_{ij} = 0 \textrm{ whenever } i \geq j\} \\
+        W_2 \textrm{ consists of all upper triangular matrices but with the elements along the diagonal equal to 0.} \\
+        W_1 \cap W_2 = \{A \in V: A_{ij} = 0\} \\
+        \textrm{The only matrix that is both a diagonal matrix and an upper triangular matrix with} \\
+        \textrm{diagonal elements equal to 0 is the zero vector, } \\
+        \begin{pmatrix}
+            0 & 0 & \hdots & 0 \\
+            0 & 0 & \hdots & \vdots \\
+            \vdots & \hdots & \ddots & \vdots \\
+            0 & \hdots & \hdots & 0 \\
+        \end{pmatrix} \\
+        \therefore W_1 \cap W_2 = \vec 0 \\
+        \textrm{Since } W_1 \cap W_2 = \vec 0 \textrm{ and } W_1 \textrm{ and } W_2 \textrm{ are subspaces of } V, \ W_1 \oplus W_2 = V \qed
+    \end{gather*}
+\end{enumerate}
+\end{document}
