@@ -1,6 +1,6 @@
 # Math 115A - UCLA
 
-A repository of material for Math 115A - Linear Algebra
+A repository of material for Math 115A - [Proof-based] Linear Algebra
 
 This is to be used solely as reference material.
 
